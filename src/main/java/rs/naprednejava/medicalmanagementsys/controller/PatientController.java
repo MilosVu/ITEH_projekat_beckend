@@ -12,8 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import rs.naprednejava.medicalmanagementsys.model.Medicine;
 import rs.naprednejava.medicalmanagementsys.model.Patient;
-import rs.naprednejava.medicalmanagementsys.repository.PatientRepository;
-import rs.naprednejava.medicalmanagementsys.service.PatientService;
 
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
@@ -21,7 +19,7 @@ import rs.naprednejava.medicalmanagementsys.service.PatientService;
 public class PatientController {
 
 	@Autowired
-    private PatientService patientService;
+    private rs.naprednejava.medicalmanagementsys.services.PatientService patientService;
     
     //Get all users
     @GetMapping("/patients")

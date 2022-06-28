@@ -1,4 +1,4 @@
-package rs.naprednejava.medicalmanagementsys.repository;
+package rs.naprednejava.medicalmanagementsys.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

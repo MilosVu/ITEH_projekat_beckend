@@ -1,4 +1,4 @@
-package rs.naprednejava.medicalmanagementsys.service;
+package rs.naprednejava.medicalmanagementsys.services;
 
 import java.util.HashMap;
 import java.util.List;
@@ -13,25 +13,23 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
-import rs.naprednejava.medicalmanagementsys.exception.ResourceNotFoundException;
+import exceptions.ResourceNotFoundException;
 import rs.naprednejava.medicalmanagementsys.model.Doctor;
 import rs.naprednejava.medicalmanagementsys.model.Examination;
 import rs.naprednejava.medicalmanagementsys.model.Patient;
 import rs.naprednejava.medicalmanagementsys.model.Prescription;
 import rs.naprednejava.medicalmanagementsys.model.PrescriptionMedicine;
-import rs.naprednejava.medicalmanagementsys.repository.ExaminationRepository;
-import rs.naprednejava.medicalmanagementsys.repository.PrescriptionMedicineRepository;
-import rs.naprednejava.medicalmanagementsys.repository.PrescriptionRepository;
+
 
 @Service
 public class ExaminationService {
 
   @Autowired
-    private ExaminationRepository examinationRepository;
+    private rs.naprednejava.medicalmanagementsys.repositories.ExaminationRepository examinationRepository;
   @Autowired
-    private PrescriptionRepository prescriptionRepository;
+    private rs.naprednejava.medicalmanagementsys.repositories.PrescriptionRepository prescriptionRepository;
   @Autowired
-    private PrescriptionMedicineRepository prescriptionMedicineRepository;
+    private rs.naprednejava.medicalmanagementsys.repositories.PrescriptionMedicineRepository prescriptionMedicineRepository;
     
     public List<Examination> getAllExaminations(){
         return examinationRepository.findAll();
@@ -61,7 +59,7 @@ public class ExaminationService {
    
    public ResponseEntity<Examination> getExaminationById(Long id) {
      Examination examination = examinationRepository.findById(id)
-         .orElseThrow(() -> new ResourceNotFoundException("Examination does not exist with parameters"));
+         .orElseThrow(() -> new exceptions.ResourceNotFoundException("Examination does not exist with parameters"));
      return ResponseEntity.ok(examination);
    }
    

@@ -1,0 +1,121 @@
+package rs.naprednejava.medicalmanagementsys.services;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
+import rs.naprednejava.medicalmanagementsys.model.Examination;
+import rs.naprednejava.medicalmanagementsys.model.Medicine;
+import rs.naprednejava.medicalmanagementsys.model.Patient;
+import rs.naprednejava.medicalmanagementsys.model.Prescription;
+import rs.naprednejava.medicalmanagementsys.model.PrescriptionMedicine;
+import rs.naprednejava.medicalmanagementsys.model.PrescriptionMedicineId;
+import rs.naprednejava.medicalmanagementsys.model.PrescriptionsMedicsRequestBody;
+
+@Service
+public class PrescriptionService {
+
+	
+	@Autowired
+    private rs.naprednejava.medicalmanagementsys.repositories.PrescriptionRepository prescriptionRepository;
+	@Autowired
+    private rs.naprednejava.medicalmanagementsys.repositories.ExaminationRepository examinationRepository;
+	@Autowired
+    private rs.naprednejava.medicalmanagementsys.repositories.PrescriptionMedicineRepository prescriptionMedicineRepository;
+   
+	
+    public List<Prescription> getAllPrescriptions(){
+        return prescriptionRepository.findAll();
+    }
+    
+    
+    public List<Prescription> getAllPrescriptionsByPatient(Long id){
+    	List<Prescription> prescriptions = new ArrayList<>();
+    	List<Examination> examinations = examinationRepository.findByPatientOrderByDateOfExaminationAsc( new Patient(id) );
+    	
+    	for (Examination examination : examinations) {
+			
+    		Prescription p = prescriptionRepository.getByExamination(examination);
+    		if(p != null) {
+    			prescriptions.add(p);
+    		}
+		}
+    	
+    	return prescriptions;
+    }
+    
+    
+   	public Prescription createPrescription(PrescriptionsMedicsRequestBody request) {
+   		System.out.println(request);
+
+   		Examination examination = (request.getPrescription()).getExamination();
+   		examination.setStatusCompleted(true);
+   		
+   		examinationRepository.save(examination);
+   		
+   		System.out.println(request.getPrescription());
+   		
+   		
+   		
+   		Prescription p = (Prescription) prescriptionRepository.save(request.getPrescription());
+   		
+   		List<PrescriptionMedicine> listPrescriptionMedicines = new ArrayList<>();
+   		
+   		for (Medicine m : request.getMedicines()) {
+   			PrescriptionMedicineId pmId=new PrescriptionMedicineId();
+   			pmId.setMedicine(m);
+   			pmId.setPrescription(p);
+			PrescriptionMedicine prescriptionMedicine = new PrescriptionMedicine(pmId);
+			listPrescriptionMedicines.add(prescriptionMedicine);
+			
+		}
+   		
+   		prescriptionMedicineRepository.saveAll(listPrescriptionMedicines);
+
+   		return p;
+   		
+   	}
+   	
+  
+   	public ResponseEntity<Prescription> getPrescriptionId(Long id) {
+   		Prescription prescription = prescriptionRepository.findByExaminationId(id);
+   				
+   		return ResponseEntity.ok(prescription);
+   	}
+   	
+   	
+   	public ResponseEntity<Prescription> updatePrescription(Long id, Prescription prescriptionDetails){
+   		Prescription prescription = prescriptionRepository.findById(id)
+   				.orElseThrow(() -> new exceptions.ResourceNotFoundException("Prescription does not exist with id :" + id));
+   		
+   		
+   		prescription.setDisease(prescriptionDetails.getDisease());
+
+   		
+   		Prescription updatedPrescription = prescriptionRepository.save(prescription);
+   		return ResponseEntity.ok(updatedPrescription);
+   	}
+   	
+   	
+   	public ResponseEntity<Map<String, Boolean>> deletePrescription(Long id){
+   		Prescription prescription = prescriptionRepository.findById(id)
+   				.orElseThrow(() -> new exceptions.ResourceNotFoundException("Prescription does not exist with id :" + id));
+   		
+   		prescriptionRepository.delete(prescription);
+   		Map<String, Boolean> response = new HashMap<>();
+   		response.put("deleted", Boolean.TRUE);
+   		return ResponseEntity.ok(response);
+   	}
+
+}

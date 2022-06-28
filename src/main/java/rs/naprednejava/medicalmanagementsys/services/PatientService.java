@@ -1,4 +1,4 @@
-package rs.naprednejava.medicalmanagementsys.service;
+package rs.naprednejava.medicalmanagementsys.services;
 
 import java.util.List;
 
@@ -9,14 +9,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import rs.naprednejava.medicalmanagementsys.model.Patient;
-import rs.naprednejava.medicalmanagementsys.repository.PatientRepository;
 
 @Service
 public class PatientService {
 	
 
 	@Autowired
-    private PatientRepository patientRepository;
+    private rs.naprednejava.medicalmanagementsys.repositories.PatientRepository patientRepository;
     
     
     public List<Patient> getAllPatients(){
