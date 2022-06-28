@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 package rs.naprednejava.medicalmanagementsys.service;
 
 import java.util.ArrayList;
@@ -123,3 +124,10 @@ public class PrescriptionService {
    	}
 
 }
+=======
+package rs.naprednejava.medicalmanagementsys.services;
+
+public class PrescriptionService {
+
+}
+>>>>>>> 60cbdfb4db89644c1e6e5fcc5e780c378ab205f7
