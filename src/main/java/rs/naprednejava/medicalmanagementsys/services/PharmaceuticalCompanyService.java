@@ -15,7 +15,7 @@ import rs.naprednejava.medicalmanagementsys.model.PharmaceuticalCompany;
 @Service
 public class PharmaceuticalCompanyService {
 	@Autowired
-    private rs.naprednejava.medicalmanagementsys.repositories.pharmaceuticalCompanyRepository pharmaceuticalCompanyRepository;
+    private rs.naprednejava.medicalmanagementsys.repositories.PharmaceuticalCompanyRepository pharmaceuticalCompanyRepository;
     
     
     public List<PharmaceuticalCompany> getAllPharmaceuticalCompanies(){

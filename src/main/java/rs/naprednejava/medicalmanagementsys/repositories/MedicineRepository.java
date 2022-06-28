@@ -3,9 +3,9 @@ package rs.naprednejava.medicalmanagementsys.repositories;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import rs.naprednejava.medicalmanagementsys.model.PharmaceuticalCompany;
+import rs.naprednejava.medicalmanagementsys.model.Medicine;
 
 @Repository
-public interface pharmaceuticalCompanyRepository extends JpaRepository<PharmaceuticalCompany, Long>{
+public interface MedicineRepository extends JpaRepository<Medicine, Long>{
 
 }

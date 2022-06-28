@@ -15,7 +15,7 @@ import rs.naprednejava.medicalmanagementsys.model.Medicine;
 @Service
 public class MedicineService {
 	@Autowired
-    private rs.naprednejava.medicalmanagementsys.repositories.medicineRepository medicineRepository;
+    private rs.naprednejava.medicalmanagementsys.repositories.MedicineRepository medicineRepository;
     
     
     public List<Medicine> getAllMedicine(){
