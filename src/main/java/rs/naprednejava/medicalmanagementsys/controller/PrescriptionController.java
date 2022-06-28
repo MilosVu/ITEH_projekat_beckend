@@ -16,10 +16,21 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+<<<<<<< HEAD
+=======
+import rs.naprednejava.medicalmanagementsys.exception.ResourceNotFoundException;
+>>>>>>> 534ed9f08a37b83e4fcc9edf17dd8ea51bbc10a6
 import rs.naprednejava.medicalmanagementsys.model.Medicine;
 import rs.naprednejava.medicalmanagementsys.model.PharmaceuticalCompany;
 import rs.naprednejava.medicalmanagementsys.model.Prescription;
 import rs.naprednejava.medicalmanagementsys.model.PrescriptionsMedicsRequestBody;
+<<<<<<< HEAD
+=======
+import rs.naprednejava.medicalmanagementsys.repository.PharmaceuticalCompanyRepository;
+import rs.naprednejava.medicalmanagementsys.repository.PrescriptionRepository;
+import rs.naprednejava.medicalmanagementsys.service.PrescriptionService;
+
+>>>>>>> 534ed9f08a37b83e4fcc9edf17dd8ea51bbc10a6
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/api/v1/")
@@ -27,7 +38,11 @@ public class PrescriptionController {
 
 	
 	@Autowired
+<<<<<<< HEAD
     private rs.naprednejava.medicalmanagementsys.services.PrescriptionService prescriptionService;
+=======
+    private PrescriptionService prescriptionService;
+>>>>>>> 534ed9f08a37b83e4fcc9edf17dd8ea51bbc10a6
     
     //Get all prescriptions
     @GetMapping("/prescriptions")
@@ -65,5 +80,9 @@ public class PrescriptionController {
    	public ResponseEntity<Map<String, Boolean>> deletePrescription(@PathVariable Long id){
    		return prescriptionService.deletePrescription(id);
    	}
+<<<<<<< HEAD
 }
 
+=======
+}
+>>>>>>> 534ed9f08a37b83e4fcc9edf17dd8ea51bbc10a6

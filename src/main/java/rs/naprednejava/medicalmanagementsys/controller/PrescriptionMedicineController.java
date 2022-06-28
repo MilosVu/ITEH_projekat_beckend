@@ -18,6 +18,11 @@ import org.springframework.web.bind.annotation.RestController;
 import rs.naprednejava.medicalmanagementsys.model.Medicine;
 import rs.naprednejava.medicalmanagementsys.model.PharmaceuticalCompany;
 import rs.naprednejava.medicalmanagementsys.model.PrescriptionMedicine;
+<<<<<<< HEAD
+=======
+import rs.naprednejava.medicalmanagementsys.service.PharmaceuticalCompanyService;
+import rs.naprednejava.medicalmanagementsys.service.PrescriptionMedicineService;
+>>>>>>> 534ed9f08a37b83e4fcc9edf17dd8ea51bbc10a6
 
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
@@ -25,7 +30,11 @@ import rs.naprednejava.medicalmanagementsys.model.PrescriptionMedicine;
 public class PrescriptionMedicineController {
 
 	@Autowired
+<<<<<<< HEAD
     private rs.naprednejava.medicalmanagementsys.services.PrescriptionMedicineService prescriptionMedicineService;
+=======
+    private PrescriptionMedicineService prescriptionMedicineService;
+>>>>>>> 534ed9f08a37b83e4fcc9edf17dd8ea51bbc10a6
     
     //Get all PrescriptionMedicineService
     @GetMapping("/prescription-medicines")
@@ -56,4 +65,8 @@ public class PrescriptionMedicineController {
    	public ResponseEntity<Map<String, Boolean>> deletePrescriptionMedicine(@PathVariable Long id){
    		return prescriptionMedicineService.deletePrescriptionMedicine(id);
    	}
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 534ed9f08a37b83e4fcc9edf17dd8ea51bbc10a6

@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 package rs.naprednejava.medicalmanagementsys.repositories;
+=======
+package rs.naprednejava.medicalmanagementsys.repository;
+>>>>>>> 534ed9f08a37b83e4fcc9edf17dd8ea51bbc10a6
 
 import java.util.List;
 
@@ -12,4 +16,8 @@ public interface PrescriptionRepository extends JpaRepository<Prescription, Long
 	
 	Prescription findByExaminationId(Long examinationId);
 
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 534ed9f08a37b83e4fcc9edf17dd8ea51bbc10a6

@@ -121,4 +121,8 @@ public class Prescription {
 				+ examinationId + ", disease=" + disease + ", description=" + description + "]";
 	}
 
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 534ed9f08a37b83e4fcc9edf17dd8ea51bbc10a6

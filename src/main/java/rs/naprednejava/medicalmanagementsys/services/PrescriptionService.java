@@ -1,4 +1,7 @@
+
 package rs.naprednejava.medicalmanagementsys.services;
+
+
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -15,6 +18,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
+
 import rs.naprednejava.medicalmanagementsys.model.Examination;
 import rs.naprednejava.medicalmanagementsys.model.Medicine;
 import rs.naprednejava.medicalmanagementsys.model.Patient;
@@ -23,16 +27,19 @@ import rs.naprednejava.medicalmanagementsys.model.PrescriptionMedicine;
 import rs.naprednejava.medicalmanagementsys.model.PrescriptionMedicineId;
 import rs.naprednejava.medicalmanagementsys.model.PrescriptionsMedicsRequestBody;
 
+
 @Service
 public class PrescriptionService {
 
 	
 	@Autowired
+
     private rs.naprednejava.medicalmanagementsys.repositories.PrescriptionRepository prescriptionRepository;
 	@Autowired
     private rs.naprednejava.medicalmanagementsys.repositories.ExaminationRepository examinationRepository;
 	@Autowired
     private rs.naprednejava.medicalmanagementsys.repositories.PrescriptionMedicineRepository prescriptionMedicineRepository;
+
    
 	
     public List<Prescription> getAllPrescriptions(){
@@ -97,7 +104,9 @@ public class PrescriptionService {
    	
    	public ResponseEntity<Prescription> updatePrescription(Long id, Prescription prescriptionDetails){
    		Prescription prescription = prescriptionRepository.findById(id)
+
    				.orElseThrow(() -> new exceptions.ResourceNotFoundException("Prescription does not exist with id :" + id));
+
    		
    		
    		prescription.setDisease(prescriptionDetails.getDisease());
@@ -110,7 +119,9 @@ public class PrescriptionService {
    	
    	public ResponseEntity<Map<String, Boolean>> deletePrescription(Long id){
    		Prescription prescription = prescriptionRepository.findById(id)
+
    				.orElseThrow(() -> new exceptions.ResourceNotFoundException("Prescription does not exist with id :" + id));
+
    		
    		prescriptionRepository.delete(prescription);
    		Map<String, Boolean> response = new HashMap<>();
@@ -119,3 +130,5 @@ public class PrescriptionService {
    	}
 
 }
+
+
