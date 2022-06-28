@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import rs.naprednejava.medicalmanagementsys.model.Medicine;
 
 @Repository
-public interface medicineRepository extends JpaRepository<Medicine, Long>{
+public interface MedicineRepository extends JpaRepository<Medicine, Long>{
 
 }
