@@ -14,7 +14,7 @@ import rs.naprednejava.medicalmanagementsys.model.Doctor;
 public class DoctorService {
 
 	@Autowired
-    private rs.naprednejava.medicalmanagementsys.repositories.doctorRepository doctorRepository;
+    private rs.naprednejava.medicalmanagementsys.repositories.DoctorRepository doctorRepository;
     
     
     public List<Doctor> getAllDoctors(){
